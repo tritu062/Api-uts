@@ -10,11 +10,7 @@ const whitelist = ['http://localhost:3000'];
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cors(
-    {
-    origin: whitelist
-    }
-));
+app.use(cors());
 
 try {
     app.use(middleware.decodeTokens)
@@ -25,7 +21,7 @@ try {
 // routes
 app.use(require('./routes/index.js'));
 
-const PORT = process.env.PORT || 443
+const PORT = 80
 app.listen(PORT, ()=>{
     console.log(`listening on port ${PORT}`);
 });
